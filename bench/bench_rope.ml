@@ -103,7 +103,6 @@ let medium_left = construct' `Left_skewed medium_string
 let medium_right = construct' `Right_skewed medium_string
 let medium_balanced = construct' `Balanced medium_string
 let medium_string_list = List.init 2048 ~f:(const medium_string)
-
 let%bench "medium String.concat" = String.concat medium_string_list
 let%bench "medium List.rev + String.concat" = String.concat (List.rev medium_string_list)
 
