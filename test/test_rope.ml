@@ -105,6 +105,6 @@ let%expect_test "to_string and For_testing.to_string_tailcall produce identical 
         raise_s
           [%sexp
             "mismatch between to_string implementations"
-          , { to_string : string; to_string_simple : string }]);
+            , { to_string : string; to_string_simple : string }]);
   [%expect {| |}]
 ;;
