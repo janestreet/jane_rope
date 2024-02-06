@@ -1,3 +1,5 @@
-(library (name rope_test)
+(library
+ (name rope_test)
  (libraries base expect_test_helpers_core.expect_test_helpers_base rope)
- (preprocess (pps ppx_jane)))
+ (preprocess
+  (pps ppx_jane)))
