@@ -130,11 +130,11 @@ let to_string = To_string.to_string
 let to_char_sequence t = Tree.to_char_sequence t.tree
 
 include Sexpable.Of_stringable (struct
-  type nonrec t = t
+    type nonrec t = t
 
-  let to_string = to_string
-  let of_string = of_string
-end)
+    let to_string = to_string
+    let of_string = of_string
+  end)
 
 (* We could loosen the [String.max_length] length restriction, since people can still read
    an arbitrary-length sequence out of [to_char_sequence]. I choose not to do this because

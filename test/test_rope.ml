@@ -69,7 +69,6 @@ let ba = of_string "ba"
 let%expect_test "is_prefix" =
   let test a b =
     require_equal
-      [%here]
       (module Bool)
       (String.is_prefix (to_string a) ~prefix:(to_string b))
       (is_prefix a ~prefix:b)
@@ -94,7 +93,6 @@ let%expect_test "is_prefix" =
 
 let%expect_test "to_string and For_testing.to_string_tailcall produce identical results" =
   quickcheck_m
-    [%here]
     (module Rope)
     ~f:(fun t ->
       let to_string = to_string t in
