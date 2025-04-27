@@ -13,8 +13,7 @@ val empty : t
 val is_empty : t -> bool
 val length : t -> int
 
-(** Allocates a fresh string, so takes time proportional to the total
-    size of the result. *)
+(** Allocates a fresh string, so takes time proportional to the total size of the result. *)
 val to_string : t -> string
 
 (** [to_char_sequence] can often produce characters incrementally, but in the worst case
@@ -33,9 +32,9 @@ val concat_array : ?sep:t -> t array -> t
 val add_to_buffer : t -> Buffer.t -> unit
 
 (** [is_prefix a ~prefix:b] is a more efficient version of
-    [String.is_prefix (Rope.to_string a) ~prefix:(Rope.to_string b)].
-    However, the worst-case time complexity is still [O(length t)]
-    instead of [O(min(length t, length prefix))] as one could expect. *)
+    [String.is_prefix (Rope.to_string a) ~prefix:(Rope.to_string b)]. However, the
+    worst-case time complexity is still [O(length t)] instead of
+    [O(min(length t, length prefix))] as one could expect. *)
 val is_prefix : t -> prefix:t -> bool
 
 module For_testing : sig
