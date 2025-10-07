@@ -38,7 +38,7 @@ end
 
 type t =
   { len : int
-  ; tree : Tree.t
+  ; tree : Tree.t @@ global
   }
 
 let of_string s = { len = String.length s; tree = Base s }
@@ -180,7 +180,11 @@ let is_prefix t ~prefix =
   prefix.len <= t.len && Tree.either_is_prefix_of_other t.tree prefix.tree
 ;;
 
-let equal a b = a.len = b.len && Tree.either_is_prefix_of_other a.tree b.tree
+let%template[@mode local] equal a b =
+  a.len = b.len && Tree.either_is_prefix_of_other a.tree b.tree
+;;
+
+let%template equal a b = (equal [@mode local]) a b
 
 let quickcheck_generator =
   let open Base_quickcheck in
@@ -238,7 +242,7 @@ module For_testing = struct
 
   type nonrec t = t =
     { len : int
-    ; tree : Tree.t
+    ; tree : Tree.t @@ global
     }
   [@@deriving sexp_of]
 
