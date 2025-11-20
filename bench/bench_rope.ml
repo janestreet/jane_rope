@@ -1,9 +1,9 @@
 open! Core
 open! Rope
 
-(* This set of benchmarks can trigger some pathological GC behavior where compaction
-   takes ~70% of the time.
-   In particuar the "long" benchmarks in [d9eaee43371c] (since removed) were doing that.
+(* This set of benchmarks can trigger some pathological GC behavior where compaction takes
+   ~70% of the time. In particuar the "long" benchmarks in [d9eaee43371c] (since removed)
+   were doing that.
 *)
 let () = Gc.disable_compaction ~allocation_policy:`Don't_change ()
 
@@ -58,8 +58,8 @@ let%bench "small List.rev + String.concat" =
   (* This test is intended to correspond roughly to [Pipe.to_list >>| String.concat],
      which produces the same result as
      {[
-       Pipe.fold_without_pushback ~init:Rope.empty
-         ~f:(fun rope string -> Rope.(^) rope (Rope.of_string string))
+       Pipe.fold_without_pushback ~init:Rope.empty ~f:(fun rope string ->
+         Rope.( ^ ) rope (Rope.of_string string))
      ]}
   *)
   String.concat (List.rev small_string_list)
@@ -124,5 +124,5 @@ let%bench "medium balanced -> For_testing.to_string_tailcall" =
 
 let%bench "medium balanced -> to_string" = to_string medium_balanced
 
-(* We used to have some 'long' benchmarks here, but they were quite slow and didn't
-   seem to tell us anything helpful. *)
+(* We used to have some 'long' benchmarks here, but they were quite slow and didn't seem
+   to tell us anything helpful. *)
