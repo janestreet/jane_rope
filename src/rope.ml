@@ -2,8 +2,8 @@ open! Base
 
 (* Invariants:
 
-   - [Append (x, y)] must have both [x] and [y] non-empty (complexity analysis
-     of [to_string] relies on it).
+   - [Append (x, y)] must have both [x] and [y] non-empty (complexity analysis of
+     [to_string] relies on it).
    - Overall length is less than [String.max_length] (so [to_string] can work, at least in
      principle). *)
 module Tree = struct
@@ -47,11 +47,11 @@ let length t = t.len
 let is_empty t = length t = 0
 
 module To_string = struct
-  (* [todo_right] avoids stack overflow (some usage patterns result in highly
-     unbalanced trees, so the naive recursive approach doesn't work). However we can
-     avoid that allocation by using the process stack when the depth appears small, as
-     inspired by [Base.List.map].  This is sufficient to make the common case do
-     zero minor-heap allocations.
+  (* [todo_right] avoids stack overflow (some usage patterns result in highly unbalanced
+     trees, so the naive recursive approach doesn't work). However we can avoid that
+     allocation by using the process stack when the depth appears small, as inspired by
+     [Base.List.map]. This is sufficient to make the common case do zero minor-heap
+     allocations.
 
      Using unsafe blitting substantially improves performance, but depends on the
      correctness of the [len] field to avoid memory corruption. To be precise, if [len] is
