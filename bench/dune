@@ -2,4 +2,4 @@
  (name rope_bench)
  (libraries core rope)
  (preprocess
-  (pps ppx_jane)))
+  (pps ppx_jane -compare-require-explicit-locality)))
