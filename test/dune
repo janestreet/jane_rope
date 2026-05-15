@@ -1,5 +1,5 @@
 (library
  (name rope_test)
- (libraries base expect_test_helpers_core.expect_test_helpers_base rope)
+ (libraries base expect_test_helpers_base rope)
  (preprocess
   (pps ppx_jane -compare-require-explicit-locality)))
